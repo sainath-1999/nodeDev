@@ -1,0 +1,28 @@
+{
+  "name": "node-_dev",
+  "version": "1.0.0",
+  "description": "collab for dev",
+  "main": "index.js",
+  "scripts": {
+    "start": "node src/app.js",
+    "dev": "nodemon src/app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sainath-1999/nodeDev.git"
+  },
+  "keywords": [
+    "nodejs",
+    "java",
+    "script"
+  ],
+  "author": "sainath",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/sainath-1999/nodeDev/issues"
+  },
+  "homepage": "https://github.com/sainath-1999/nodeDev#readme",
+  "dependencies": {
+    "express": "^5.1.0"
+  }
+}
