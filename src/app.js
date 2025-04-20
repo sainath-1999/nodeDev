@@ -12,8 +12,10 @@ app.use("/hello", (req,res)=> {
     res.send("hello from the dashboard")
 })
 
-app.get("/abc*d", (req,res) => {
-    res.send({f_n: "sainath", l_n: "devisetty"})
+
+app.get("/user/:userId/:name/:password", (req,res) => {
+    console.log(req.params);
+    res.send({fisrst_name: "sainath", last_name: "devisetty"})
 })
 
 app.post("/user", (req,res) => {
