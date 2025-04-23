@@ -23,6 +23,22 @@ app.get("/user", userAuth, (req,res) => {
     res.send("user data fetched successfully");
 })
 
+app.use("/", (err,req,res,next) => {
+    if(err){
+        res.status(500).send("Internal server error!!!")
+    }
+})
+
+app.get("/userData", (req,res) => {
+    throw new Error("jcdnsjbv");
+    res.send("user data sent")
+})
+
+app.use("/", (err,req,res,next) => { // wild card to error handling to catch the unhandled error
+    if(err){
+        res.status(500).send("Internal server error!!!")
+    }
+})
 
 
 app.listen(7777, () => {
