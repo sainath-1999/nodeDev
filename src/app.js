@@ -1,36 +1,39 @@
-const express = require('express')
+const express = require("express");
 
-const app = express(); ///creating new web server 
-
+const app = express(); ///creating new web server
 
 //if we not specify the path then it always gives the same result
-app.use("/home", (req,res) => {
-    res.send("Hello from the server...")
-})
-
-app.use("/hello", (req,res)=> {
-    res.send("hello from the dashboard")
-})
 
 
-app.get("/user/:userId/:name/:password", (req,res) => {
-    console.log(req.params);
-    res.send({fisrst_name: "sainath", last_name: "devisetty"})
-})
+// app.use("/route", rH, [rH2,rH3], rH4, rH5)
+app.use(
+  "/route",
+  (req, res, next) => {
+    next();
 
-app.post("/user", (req,res) => {
-    //send the data to DB
-    res.send( "Data successfully saved to database!!!");
-})
-
-app.delete("/user", (req, res) => {
-    //delete data from the db
-    res.send("Deleted successfully");
-})
-
+    console.log("1st response is loaded");
+  },
+  (req, res, next) => {
+    console.log("2nd response is loaded");
+    // res.send("second response")
+    next();
+  },
+  (hello, world, next) => {
+    next();
+    console.log("3rd response");
+    world.send("3rd response has been sent");
+  },
+  (req, res, next) => {
+    console.log("4th response");
+    // res.send("4th resopnse has been sent")
+    next();
+  },
+  (req, res) => {
+    console.log("5th responseeee logg");
+    res.send("5th response has been reported");
+  }
+);
 
 app.listen(7777, () => {
-    console.log("server is successfully created and listing on the port 7777...");
-    
-})
-
+  console.log("server is successfully created and listing on the port 7777...");
+});
