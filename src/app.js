@@ -2,37 +2,28 @@ const express = require("express");
 
 const app = express(); ///creating new web server
 
-//if we not specify the path then it always gives the same result
+const {adminAuth, userAuth} = require('./middleWare/auth')
 
 
 // app.use("/route", rH, [rH2,rH3], rH4, rH5)
-app.use(
-  "/route",
-  (req, res, next) => {
-    next();
+app.use("/admin", adminAuth)
 
-    console.log("1st response is loaded");
-  },
-  (req, res, next) => {
-    console.log("2nd response is loaded");
-    // res.send("second response")
-    next();
-  },
-  (hello, world, next) => {
-    next();
-    console.log("3rd response");
-    world.send("3rd response has been sent");
-  },
-  (req, res, next) => {
-    console.log("4th response");
-    // res.send("4th resopnse has been sent")
-    next();
-  },
-  (req, res) => {
-    console.log("5th responseeee logg");
-    res.send("5th response has been reported");
-  }
-);
+app.post("/user/login", (req,res) => {
+    res.send("user logged in successfully!!!")
+})
+
+
+app.get("/admin/getAllData", (req,res) => {
+    console.log("we are able to get the data of the admin");
+    res.send("the Admin data displayed successfully");
+})
+
+app.get("/user", userAuth, (req,res) => {
+    console.log("we are getting the user data");
+    res.send("user data fetched successfully");
+})
+
+
 
 app.listen(7777, () => {
   console.log("server is successfully created and listing on the port 7777...");
