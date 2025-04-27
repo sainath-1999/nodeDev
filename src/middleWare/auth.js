@@ -1,7 +1,7 @@
 
 const adminAuth = (req, res, next) => {
     const token = "xyz";
-    const isAdminAuthurization = token === "xynjz";
+    const isAdminAuthurization = token === "xyz";
 
     if(!isAdminAuthurization) {
         res.status(401).send("Unauthorised resquest!!!")
