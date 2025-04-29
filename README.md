@@ -10,4 +10,8 @@ Hello world welcome dev node.
 - Create a user scehma & usef model  
 - Create a POST /signup API to add data to database
 - Push some documnets using API calls from the postman.
-- Error handling using try, catch
+- Error handling using try, catch 
+
+- Js Object vs JSON (difference).
+- Add the express.json middleware to your APP.
+- Make your signup API dynamic to recive data from the end user.
