@@ -15,3 +15,12 @@ Hello world welcome dev node.
 - Js Object vs JSON (difference).
 - Add the express.json middleware to your APP.
 - Make your signup API dynamic to recive data from the end user.
+- User.findOne with duplicate email ids, which object returned
+- API- Get user by emailId
+- API - Feed API - GET /feed - get all the users from the database
+- API - GET user by ID
+- Create a delete user API
+- API - Update a user
+- Explore the mongoose documentation for the model method (https://mongoosejs.com/docs/api/model.html#Model.findByIdAndDelete())
+- What are options in model.findOneandUpdate method, explor 
+- API to update user data using emailID
