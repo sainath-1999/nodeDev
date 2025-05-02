@@ -37,4 +37,4 @@ Hello world welcome dev node.
 - Data Sanitaization - Add API validation for each field.
 - Install validator 
 - Explore validator library function and validator function for the password, email, photoUrl.
-
+- NEVER TRUST res.body
