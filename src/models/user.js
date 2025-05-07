@@ -47,11 +47,11 @@ const userSchema = new mongoose.Schema(
       type: String,
       default:
         " https://img.freepik.com/free-vector/blue-circle-with-white-user_78370-4707.jpg?t=st=1746098186~exp=1746101786~hmac=b52635d0c00d033ffd23a10b0988609561c7cae6310b9f4d1c7fe680d9d7c999&w=1380",
-      validate(value) {
-          if(!validator.isURL(value)){
-            throw new Error("Invalid URL:"+ value)
-          }
-      }
+      // validate(value) {
+      //     if(!validator.isURL(value)){
+      //       throw new Error("Invalid URL:"+ value)
+      //     }
+      // }
     },
     skills: {
       type: [String],

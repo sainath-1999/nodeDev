@@ -1,16 +1,54 @@
 const express = require("express");
 const connectDB = require("./config/database");
 const app = express(); ///creating new web server
+const bcrypt = require("bcrypt");
 const User = require("./models/user");
+const { validateSignUpData } = require("./util/validation");
 
 app.use(express.json());
+
+//we should never trust the req.body
+
+app.post("/login", async (req, res) => {
+  try{
+    const {emailId, password} = req.body;
+
+    const user = await User.findOne({emailId: emailId});
+    if(!user){
+      throw new Error("Invalid Credentials!!!")
+    }
+
+    const passwordIsMatched = await bcrypt.compare(password, user.password)
+
+    if(passwordIsMatched){
+      res.send("Login successful!!!")
+    } else {
+      throw new Error("Invalid credentials!!!")
+    }
+  }catch(error){
+    res.status(400).send("Error: "+ error.message)
+  }
+})
+
 app.post("/signup", async (req, res) => {
-  //Create a new instance of the User model
-  const user = User(req.body);
+  
 
   try {
-    const updateRequired = ["userId", "skills", "fistName", "lastName"];
+  //first vallidation
+  validateSignUpData(req);
 
+  const { password, firstName, lastName, emailId } = req.body;
+
+  //password encrption
+  const passwordHash = await bcrypt.hash(password, 10);
+
+  //Create a new instance of the User model
+  const user = User({
+    firstName,
+    lastName,
+    emailId,
+    password: passwordHash,
+  });
     await user.save();
     res.send("User Added to the database successfully!");
   } catch (err) {
@@ -65,7 +103,6 @@ app.patch("/user/:userId", async (req, res) => {
 
   try {
     const ALLOWED_UPDATE = ["userId", "skills", "gender", "about", "photoUrl"];
-    
 
     const isUpdateAllowed = Object.keys(data).every((k) =>
       ALLOWED_UPDATE.includes(k)
@@ -74,8 +111,8 @@ app.patch("/user/:userId", async (req, res) => {
       throw new Error("Update not allowed!!!");
     }
 
-    if(data?.skills.length > 10){
-      throw new Error("Skills cannot be more than 10")
+    if (data?.skills.length > 10) {
+      throw new Error("Skills cannot be more than 10");
     }
 
     const user = await User.findByIdAndUpdate({ _id: userId }, data, {
@@ -83,8 +120,8 @@ app.patch("/user/:userId", async (req, res) => {
       runValidators: true,
     });
     res.send("user updated successfully!!!");
-  } catch (error) {    
-    res.status(400).send("UPDATE FAILED:" + error.message );
+  } catch (error) {
+    res.status(400).send("UPDATE FAILED:" + error.message);
   }
 });
 

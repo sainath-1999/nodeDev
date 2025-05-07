@@ -38,3 +38,13 @@ Hello world welcome dev node.
 - Install validator 
 - Explore validator library function and validator function for the password, email, photoUrl.
 - NEVER TRUST res.body
+
+---------- Encrypting Passwords-----------------------------
+
+passwords should be stored in a encryt manner(hash format) in the database 
+
+- validate in signup API 
+- Install bcrypt package
+- Create a password hash using bcrypt.hash and users with encrypted password.
+- Create logon API
+- Compare passwords and throw errors if email or password is invalid
