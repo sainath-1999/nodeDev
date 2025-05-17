@@ -48,3 +48,16 @@ passwords should be stored in a encryt manner(hash format) in the database
 - Create a password hash using bcrypt.hash and users with encrypted password.
 - Create logon API
 - Compare passwords and throw errors if email or password is invalid
+
+
+--------Episode 10 | Authentication & Schema validation--------------
+
+- istall cookie-parse
+- just send a dummy cookie to user 
+- Create GET /profile API and check if you get the cookie back
+- install jsonwebtoken
+- In login API, after email and password validation, create a JWT token and send it to user in cookies.
+- read the cookies inside your profile API and find the logged in user
+- userAuth Middleware 
+- Add the userAuth middle ware in profile and a new sendConnection Request API 
+- set the expiry of JWT token and cookies for the 7 days like your wish
