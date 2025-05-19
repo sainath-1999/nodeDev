@@ -61,3 +61,13 @@ passwords should be stored in a encryt manner(hash format) in the database
 - userAuth Middleware 
 - Add the userAuth middle ware in profile and a new sendConnection Request API 
 - set the expiry of JWT token and cookies for the 7 days like your wish
+
+------------Episode 11 | Diving into the APIs and express Router--------------
+
+- Expore tinder APIs
+- Create a list of all API you can think of in DEv Tinder
+- Group multiple routes under tge reective routers 
+- Read documentation for express.Router
+- Create routes folder for managing auth, profile, request routers 
+- Create authRouter, profileRouter, requestRouter
+- Import these routers in app.js
