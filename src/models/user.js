@@ -41,6 +41,9 @@ const userSchema = new mongoose.Schema(
         }
       },  
     },
+    age:{
+      type:Number,
+    },
     about: {
       type: String,
       default: "The default values of about is new",

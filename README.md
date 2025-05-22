@@ -71,3 +71,20 @@ passwords should be stored in a encryt manner(hash format) in the database
 - Create routes folder for managing auth, profile, request routers 
 - Create authRouter, profileRouter, requestRouter
 - Import these routers in app.js
+- Create POST /logout API
+- Create PATCH /profile/edit
+- Cretae PATCH /profile/password ==> forgot password API
+- Make you validate all data in every POST, PATCH apis
+
+------------Episode 12 | Logical DB query & compound Indexes---------------
+
+- Create Connection request schema
+- Send connection request API
+- Proper vlidation of data
+- Think about all corner cases
+- $or and $and query in mongoose --> go through the doc
+- scehma.pre("save") function 
+- Read more about indexes in mongoDB
+- why do we need index in  DB/
+- what is the advantage and disadvantage of creating indexes?
+- Read the doc about the compond indexes.
